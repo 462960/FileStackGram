@@ -27,19 +27,19 @@ import {LayoutContainer} from './components/Layout';
 import { HomeContainer } from './components/home';
 import { DetailContainer } from './components/detail';
 import { AddContainer } from './components/add';
-import {store, sagaMiddleware} from './store';
+
 
 // Filestack API requires to set a key
 filepicker.setKey("AHRd8VRUSST2QylUPpUrTz");
 
-// const sagaMiddleware = createSagaMiddleware();
-// const store = createStore(
-//   reducer,
-//   compose(
-//     applyMiddleware(sagaMiddleware),
-//     window.devToolsExtension ? window.devToolsExtension() : f => f // connect to redux devtools
-//   )
-// );
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(
+  reducer,
+  compose(
+    applyMiddleware(sagaMiddleware),
+    window.devToolsExtension ? window.devToolsExtension() : f => f // connect to redux devtools
+  )
+);
  sagaMiddleware.run(rootSaga);
 
 //const history = syncHistoryWithStore(browserHistory, store);
